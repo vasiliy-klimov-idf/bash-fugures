@@ -14,9 +14,11 @@ space_init_in(){
 }
 
 lines(){
-    space_line="--"
+    header_space_line="¯¯"
+    footer_space_line="__"
     for ((i = 0 ; i < $1 ; i++)); do
-        space_line="-$space_line-"
+        header_space_line="¯$header_space_line¯"
+        footer_space_line="__$footer_space_line"
     done
 }
 
@@ -27,7 +29,7 @@ print_hexagon(){
     lines $1   
     space_in2="$space_in "
     
-    echo -e "$space_out /$space_line\ "
+    echo -e "$space_out /$header_space_line\ "
     for ((i = $1 ; i > 0 ; i--)); do
         space_in="$space_in⠀⠀"
         space_init_out $i
@@ -41,7 +43,7 @@ print_hexagon(){
         echo -e $space_out\\"$space_in2 $space_in/"
     done
 
-    echo -e "$space_out \\$space_line/"
+    echo -e "$space_out \\$footer_space_line/"
 }
 
 print_hexagon 10

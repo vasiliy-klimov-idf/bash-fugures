@@ -31,4 +31,4 @@ print_romb(){
     echo -e "$space_out \/"
 }
 
-print_romb 5
+print_romb 10

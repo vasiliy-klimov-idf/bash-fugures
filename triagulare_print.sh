@@ -17,11 +17,11 @@ print_trig(){
         echo -e $space_out"/"$space_in"\ "
     done
     
-    footer="--"
+    footer="¯¯"
     for ((i = 0 ; i < $1 ; i++)); do
-        footer="--$footer"
+        footer="¯¯$footer"
     done
     echo " $footer"
 }
 
-print_trig 20
+print_trig 10
