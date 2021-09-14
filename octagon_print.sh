@@ -8,8 +8,8 @@ space_init_out(){
 }
 space_init_in(){
     space_in=""
-    for ((i = 0 ; i < $1 ; i++)); do
-        space_in="$space_in⠀⠀"
+    for ((i = 0 ; i < $1 ; i++)); do      
+        space_in="$space_in⠀$byte⠀"
     done
 }
 
@@ -28,7 +28,6 @@ print_octagon(){
     
     lines $1   
     space_in2="$space_in "
-    
     echo -e "$space_out /$header_space_line$header_space_line\ "
     for ((i = $1 ; i > 0 ; i--)); do
         space_in="$space_in⠀⠀"
@@ -37,7 +36,7 @@ print_octagon(){
     done
 
     for ((j = $1 ; j > 0 ; j--)); do
-        echo -e "$space_out|" $space_in "|"  
+    echo -e "$space_out|" $space_in "|"  
     done
 
     space_init_out $i 

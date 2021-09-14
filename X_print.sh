@@ -12,7 +12,15 @@ space_init_in(){
         space_in=" $space_in "
     done
 }
-print_romb(){
+
+print_x(){
+    for ((i = $1 ; i > 0 ; i--)); do
+        space_out="$space_out⠀"
+        space_init_in $i
+        echo -e $space_out\\"$space_in/"
+    done
+
+    echo -e "$space_out \/"
     space_init_out $1
     echo -e "$space_out /\ "
 
@@ -21,14 +29,7 @@ print_romb(){
         space_init_out $i
         echo -e $space_out"/"$space_in"\        "
     done
-    
-    space_init_out $i 
-    for ((i = $1 ; i > 0 ; i--)); do
-        space_out="$space_out⠀"
-        space_init_in $i
-        echo -e $space_out\\"$space_in/"
-    done
-    echo -e "$space_out \/"
 }
 
-print_romb 5
+print_x 5
+
