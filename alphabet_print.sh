@@ -112,7 +112,7 @@ print_D(){
     space_init_in $1
     lines $1   
     
-    echo -e "/$header_space_line\ "
+    echo -e "$header_space_line "
     for ((i = $1/2 ; i > 0 ; i--)); do
         space_in="$space_in⠀"
         echo -e "|$space_in \\"  
@@ -128,7 +128,7 @@ print_D(){
         echo -e "|"$space_out $space_in"/" 
     done
 
-    echo -e "\\$footer_space_line/"
+    echo -e "$footer_space_line"
 }
 
 print_E(){
@@ -175,6 +175,32 @@ print_F(){
     done
     echo -e " \\$space_in " 
 }
+print_K(){
+    for ((i = $1/2 ; i > 0 ; i--)); do
+        space_init_in $i
+        echo -e "|$space_in/"
+    done
+
+    echo -e "|/"
+    echo -e "|\ "
+
+    for ((i = $1/2 ; i > 0 ; i--)); do
+        space_in2="⠀$space_in2⠀"
+        echo -e "|$space_in2\\"
+    done
+}
+
+print_L(){
+    lines $1
+    for ((i = $1 ; i > -1 ; i--)); do
+        echo -e "|"
+    done
+    echo -e "|$header_space_line/"
+}
+
+print_M(){
+    echo "ToDo"
+}
 
 print_N(){
     space_init_out $1
@@ -187,6 +213,41 @@ print_N(){
     done
 }
 
+print_P(){
+    space_init_in $1
+    space_init_out $1
+    
+    lines $1
+    space_in2="$space_in " 
+
+    echo -e " $header_space_line "
+    for ((i = $1/2 ; i > 0 ; i--)); do
+        space_in="$space_in⠀"
+        echo -e "|$space_in \\"  
+    done
+
+    for ((j = $1/2 ; j > 0 ; j--)); do
+    echo -e "|$space_in |"  
+    done
+
+    space_init_in $1
+    for ((k = $1/2 ; k > 0 ; k--)); do
+        space_init_out $k
+        echo -e "|"$space_out $space_in"/"
+        if [ $k == 1 ];then
+            lines $1/2-1
+            space_init_in $1/2
+            echo -e "|"$space_in $header_space_line"/"
+        fi  
+    done
+    space_init_in $1/2
+    for ((k = $1 ; k > 0 ; k--)); do
+        echo -e "|$space_in|"
+    done
+    
+    lines $1/2
+    echo -e " $footer_space_line"
+}
 
 print_R(){
     space_init_in $1/2
@@ -233,7 +294,7 @@ print_W(){
         space_init_in $i
         echo -e $space_out\\"$space_in/$space_out$space_out\\$space_in/"
     done
-
+    lines $1/3
     echo -e "$space_out \/$space_out $space_out \/"
 }
 
@@ -284,3 +345,4 @@ print_Z(){
     echo -e $footer_space_line
 }
 
+print_M 10
